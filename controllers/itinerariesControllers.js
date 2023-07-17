@@ -32,19 +32,21 @@ const itinerariesControllers = {
         });
     },// trae todos los itinerarios de una ciudad ()
     getOneItinerary: async (req, res) => {
-        let id = req.params.id
-        let itinerary
-        let error = null
-
+        let id = req.params.id;
+        let itinerary;
+        let error = null;
+      
         try {
-            itinerary = await Itinerary.findOne({ _id: id })
-        } catch (err) { error = err }
+          itinerary = await Itinerary.findOne({ _id: id });
+        } catch (err) {
+          error = err;
+        }
         res.json({
-            response: error ? "No matches found in database" : itinerary,
-            success: error ? false : true,
-            error: error
-        })
-    }, //trae un solo itinerario
+          response: error ? "No matches found in database" : itinerary,
+          success: error ? false : true,
+          error: error,
+        });
+      }, //trae un solo itinerario
     modifyItinerary: async (req, res) => {
         const id = req.params.id
         const data = req.body.data
