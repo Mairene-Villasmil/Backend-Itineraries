@@ -15,21 +15,21 @@ const itinerariesControllers = {
         })
     },//trae todos los itinerarios de la DB
     getAllItinerariesInCity: async (req, res) => {
-        const idCity = req.params.idCity;
-        let itineraries;
-        let error = null;
-
-        try {
-            itineraries = await Itinerary.find({ idCity: idCity });
-        } catch (err) {
-            error = err;
-        }
-
-        res.json({
-            response: error ? "ERROR" : itineraries,
-            success: error ? false : true,
-            error: error
-        });
+      const idCity = req.params.idCity;
+      let itineraries;
+      let error = null;
+    
+      try {
+        itineraries = await Itinerary.find({ idCity: idCity });
+      } catch (err) {
+        error = err;
+      }
+    
+      res.json({
+        response: error ? "ERROR" : itineraries,
+        success: error ? false : true,
+        error: error
+      });
     },// trae todos los itinerarios de una ciudad ()
     getOneItinerary: async (req, res) => {
         let id = req.params.id;
